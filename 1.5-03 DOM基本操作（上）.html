@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM基本操作</title>
+	<style type="text/css">
+		h2{
+			font-size: 24px;
+		}
+	</style>
+	<!-- 
+		DOM-----Document Object Model
+		一整套操作文档流相关内容的属性和方法
+
+	
+		获取元素的方式：
+		   根据id名获取：document.getElementById('id名称')
+		   根据元素类名获取：document.getElementsByClassName('元素类名')
+		   根据元素标签名获取：document.getElementsTagName('标签名')
+		   根据选择器获取一个：document.querySelector('选择器')
+		   根据选择器获取一组：document.querySelectorAll('选择器')
+
+		操作元素内容：
+		   操作元素 文本 内容:
+		       获取：元素.innerText
+		       设置：元素.innerText='新内容'
+		   操作元素 超文本 内容：
+		       获取：元素.innerHTML
+		       设置：元素.innerHTML='新内容'
+
+		操作元素属性：
+		   原生属性：
+		   		获取：元素.属性名
+		   		设置：元素.属性名='属性值'
+		   自定义属性：
+		   		获取：元素.getAttribute('属性名')
+		   		设置：元素.setAttribute('属性名','属性值')
+		   		删除：元素.removeAttribute('属性名')
+
+		操作元素类名：
+				获取：元素.className
+				设置：元素.className='新类名'
+
+		操作元素行内样式：
+				获取：元素.style.样式名
+				设置：元素.style.样式名='样式值'
+				注意：只能获取和设置元素的行内样式
+
+		获取元素非行内样式：
+				获取：window.getComputedStyle(元素).样式名
+				注意：可以获取行内样式，也可以获取非行内样式
+
+	 -->
+</head>
+<body>
+	<!-- <div>一</div>
+	<div class="box">二</div>
+	<div class="box content">三</div>
+	<div class="box">四</div><br>
+
+	<button>操作内容</button>
+	<div id="txt">
+		<p>文本内容</p>
+	</div> -->
+
+	<h2 id="t1" style="width: 100px;height: 100px;background: blue;">文本</h2>
+
+	<button>操作属性</button>
+	<div id="box" class="content" hello="world">div标签</div>
+	<input type="password" name="">
+
+</body>
+<script type="text/javascript">
+	var res=document.querySelector('div')
+	console.log(res)
+
+	var res1=document.querySelector('.box')
+	console.log(res1)
+
+	var res2=document.querySelectorAll('div')
+	console.log(res2)
+
+
+
+	console.log(' ')
+	var ele=document.getElementById('txt')
+	var btn=document.querySelector('button')
+
+	//console.log(ele.innerText)
+	// console.log(ele.innerHTML)
+
+	// btn.onclick=function(){
+	// 	ele.innerHTML='<span>新内容</span>'
+	// }
+
+	//获取元素
+	console.log(' ')
+	var box=document.querySelector('div')
+	var inp=document.querySelector('input')
+	var btn=document.querySelector('button')
+
+	
+	var res=box.getAttribute('hello')
+	console.log(res)
+
+	//获取类名
+	console.log( box.className )
+
+
+	btn.onclick=function(){
+		box.id='content'
+		inp.type='checkbox'
+		//box.setAttribute('hello','新来的')
+		box.removeAttribute('hello')
+		box.className='context1'
+
+		t1.style.background='red'
+
+	}
+
+	var h=document.querySelector('h2')
+	console.log(t1.style.width)
+	console.log(t1.style.background)
+
+	//获取非行内样式
+	console.log(window.getComputedStyle(t1).fontSize)
+
+
+
+</script>
+</html>

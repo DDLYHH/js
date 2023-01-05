@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>构造函数的使用规则</title>
+	<!-- 
+		构造函数的使用规则：
+			1.构造函数和普通函数没有区别，只不过在调用的时候和new关键字连用
+			2.书写构造函数，首字母大写，用于和普通函数进行区分，知道和new关键字连用
+			3.调用的时候，和new关键字连用
+			  只有连用这个函数才会有自动创建和返回对象和批量生产对象的能力，否则没有
+			4.调用构造函数的时候，如果不需要传递参数，可以不写最后的小括号
+			5.当函数名和new关键字连用的时候，函数内部的this指向当前实例（new关键字前面的变量）
+			  =>直接在函数体内书写this.xxx=值，就是在向自动创建出来的对象里面添加内容
+			6.构造函数内部不要随便写return
+
+	 -->
+</head>
+<body>
+<script type="text/javascript">
+	//普通函数
+	function person(){
+		console.log('小person')
+	}
+
+	//构造函数
+	function Person(){
+		this.name='Nucy'
+	}
+
+	//3.和new关键字连用
+	var obj=new Person()
+	var obj2=Person()
+	console.log(obj,obj2)
+	console.log(obj2)
+
+	function Person1(name,age){
+		this.name=name;
+		this.age=age;		
+	}
+	var obj5=new Person1("妮妮",5);
+	console.log(obj5);
+
+</script>
+</body>
+</html>

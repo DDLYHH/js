@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var s=0
+	for (var i=1; i <= 100; i++) {
+		
+		if(i % 3 == 0){
+			console.log(i)
+			s=s+1
+		}
+	}
+	document.write(s+"<br><br>")
+
+	//输出形状
+	for(var i=1;i<=9;i++){
+		
+		for (var j =  1; j <= 9; j++) {
+			document.write("* ")
+		}
+		document.write("<br>")
+	}
+	document.write("<br><br>")
+
+	for(var i=1;i<=9;i++){
+		for (var j =  1; j <= i; j++) {
+			document.write("* ")
+		}
+		document.write("<br>")
+	}
+	document.write("<br><br>")
+ 
+
+    //九九乘法表
+	for ( var i=1;i<=9;i++) {
+		for(var j=1;j<=i;j++){
+			document.write(j + "*" + i + "="+ i*j +"&nbsp;&nbsp;&nbsp;")
+			
+		}
+		document.write('</br>')
+	}
+	document.write("<br><br>")
+
+	//寻找最大公约数
+	var max=24
+	var min=12
+
+	for(i=12;i>0;i--){
+		if(max % i ==0 && min % i==0){
+			document.write(i+" ")
+			break
+		}
+
+	}
+
+	//寻找最小公倍数
+	var x=10
+	var y=12
+	for(j=10;j<= x*y ;j=j+x){
+		if(j % x ==0 && j % y ==0){
+			document.write(j)
+			break
+		}
+	}
+
+</script>
+</body>
+</html>

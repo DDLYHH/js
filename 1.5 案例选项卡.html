@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>选项卡</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+			color: white;
+		}
+		div{
+			margin: 20px auto;
+			width: 900px;
+			
+			border: 2px solid pink;
+			display: flex;
+		}
+		ul{
+			width: 25%;
+			float: left;
+			
+		}
+		ul li{
+			text-align: center;
+			line-height: 50px;
+			/*border: 1px solid lightgray;*/
+			border: 1px solid black;
+			
+			height:50px;
+			background: lightblue;
+		}
+		ul .active{
+			background: orange;
+		}
+		ol{
+			flex: 1;
+			height: 100%;
+			border: 2px solid blue;
+
+		}
+		ol li{
+			font-size: 35px;
+			background: purple;
+			text-align: center;
+			display: none;
+		}
+		ol .active{
+			display: block;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+
+		</ul>
+		<ol >
+			<li class="active">1</li>
+		
+			<li>2</li>
+			<li>3</li>
+		</ol>
+	</div>
+
+<script type="text/javascript">
+	/*
+		点击任何一个按钮盒子时
+		 所有按钮盒子取消高亮状态
+		 所有内容盒子隐藏
+	*/
+	//1.获取元素
+	var btns=document.querySelectorAll('ul>li')
+	var tabs=document.querySelectorAll('ol>li')
+	console.log(btns)
+	console.log(tabs)
+	
+	//2.给btns里所有按钮添加点击事件
+	btns.forEach(function(item,index){
+
+		item.onclick = function(){
+			//给btns和tabs里面所有内容取消active 类名		
+	 		btns.forEach(function(t,i){
+				t.className=' '
+				tabs[i].className=' '
+			})	
+			//当前点击的按钮和索引对应的盒子添加active类名
+			item.className='active'
+			tabs[index].className='active'
+		}
+
+	})
+		
+
+			
+</script>
+</body>
+</html>

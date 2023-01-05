@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>事件</title>
+	<!-- 
+		前端：通过代码的方式和页面中的某些内容做好一个约定
+		用户：触发指定行为的时候，就会执行代码
+	 -->
+	<!-- 
+		事件邦定（三要素）：
+			1.事件源：和谁做好约定
+			2.事件类型：约定一个什么行为
+			3.事件处理函数：当用户触发该行为的时候，执行什么代码
+
+		语法：
+			事件源.on事件类型=事件处理函数
+
+	-->
+	<!-- 
+		常用事件类型：
+			鼠标事件：click-鼠标单击
+					 dblclick-鼠标双击
+					 contextmenu-左键单击
+					 mousedown-鼠标按下
+					 mouseup-鼠标抬起
+					 mousemove-鼠标移动
+					 mouseover-鼠标移入
+					 mouseout-鼠标移出
+					 mouseenter-鼠标移入
+					 mouseleave-鼠标移出
+			键盘事件：keydown-键盘按下
+					 keyup-键盘抬起
+					 keypress-键盘输入
+			浏览器事件：
+					 load-加载完毕
+					 scroll-滚动
+					 resize-尺寸改变
+			触摸事件：touchstart-触摸开始
+					 touchmove-触摸移动
+					 touchend-触摸结束
+			表单事件：focus-聚焦
+					 blue-失焦
+					 change-改变
+					 input-输入
+					 submit-提交
+					 reset-重置
+	-->
+	<!-- 
+		事件对象：
+			  获取事件对象（直接在事件处理函数接受形参，会在事件触发的时候由浏览器自动传递实参，浏览器传递的实参就是本次事件的事件对象）
+			  div.onclick=function(e){
+					console.log(e)
+			  }
+			
+		事件对象内的信息-鼠标事件
+			坐标信息
+			1.offsetX和offsetY(相对于触发事件的元素)
+			2.clientX和clientY(相对于浏览器可视窗口)
+			3.pageX和pageY(相对于页面文档流)
+			
+			事件对象内的信息-键盘事件
+			键盘编码 事件对象.keyCode
+	-->
+	<!-- 
+		事件传播：
+			捕获阶段：从window按照结构子级的顺序传递到目标
+			目标阶段：准确触发事件的元素接收到行为
+			冒泡阶段：从目标按照结构父级的顺序传递到window
+
+		阻止事件传播(只触发自己的事件)：
+			语法：事件对象.stopPropagation()
+
+		事件委托：利用事件冒泡的机制，把自己的事件委托给结构父级中的某一层
+
+	 -->
+	 <style type="text/css">
+	 	#outer{
+	 		width: 160px;
+	 		height: 140px;
+	 		padding-top: 20px;
+	 		background-color: pink;
+	 	}
+	 	.center{
+	 		width: 120px;
+	 		height: 100px;
+	 		padding-top: 20px;
+	 		background-color: blue;
+	 		margin-left: 20px;
+	 	}
+	 	.inner{
+	 		width: 80px;
+	 		height: 80px;
+	 		background-color: red;
+	 		margin-left: 20px;
+	 	}
+	 	ul{
+	 		width: 300px;
+	 		height: 200px;
+	 		background-color: lightblue;
+	 		list-style: none;
+	 	}
+	 	ul li{
+	 		width: 50px;
+	 		height: 50px;
+	 		float: left;
+	 		margin-top: 20px;
+	 		margin-right: 20px;
+	 		background-color: pink;
+	 		text-align: center;
+	 	}
+	 </style>
+</head>
+<body>
+	<div>我是div1</div>
+
+	<div id="outer">
+		<div class="center">
+			<div class="inner"></div>
+		</div>
+	</div>
+	
+	<ul>
+		<li class="l1">1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+<script type="text/javascript">
+	//1.获取元素
+	var d=document.querySelector('div')
+	//2.绑定点击事件
+	// d.onclick=function(){
+	// 	console.log('好喜欢')
+	// }
+
+	//3.事件对象
+	d.onclick=function(e){
+		console.log(e)
+	}
+
+
+	//阻止事件传播
+	var outer=document.querySelector('#outer')
+	var center=document.querySelector('.center')
+	var inner=document.querySelector('.inner')
+	inner.onclick=function(){		
+		console.log('我是inner')
+	}
+	center.onclick=function(){
+		e.stopPropagation()
+		console.log('我是center')
+	}
+	outer.onclick=function(e){
+		console.log('我是outer')
+	}
+
+	//事件委托
+	var ul=document.querySelector('ul')
+	var l=document.querySelector('.l1')
+	l.onclick=function(){
+		console.log('li点击事件触发')
+	}
+
+
+	ul.onclick=function(e){
+		console.log(' ')
+		console.log('无论点击ul还是Li都会触发这个方法')
+		//target判断点击的是ul还是li
+		console.log(e.target)
+		if(e.target.tagName==='li'){
+			console.log('你点击的是li')
+		}
+	}
+	
+</script>
+</body>
+</html>

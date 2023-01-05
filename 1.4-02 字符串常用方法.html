@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>字符串常用方法</title>
+	<!-- 
+		1.charAt()
+		  语法：字符串.charAt(索引)
+		  作用：获取对应索引位置的字符
+		  返回值：对应索引位置的字符
+		2.toLowerCase()
+		  语法：字符串.toLowerCase()
+		  作用：将字符串内的字母全部转换成小写
+		  返回值：转换好的字符串
+		3.toUpperCase()
+		  语法：字符串.toUpperCase()
+		  作用：将字符串内的字母全部转换大写
+		  返回值：转换好的字符串
+		4.replace()
+		  语法：字符串.replace(换下内容，换上内容)
+		  作用：将字符串内第一个满足换下内容的片段替换成换上内容
+		  返回值：替换好的字符串
+		5.trim()
+		  语法：字符串.trim()
+		  作用：去除字符串首尾的空格
+		  返回值：去除空格后的字符串
+		6.split()
+		  语法：字符串.split(分隔符)
+		  作用：按照分隔符将字符串切割成为一个数组
+		  返回值：切割后的数组
+
+		7.substr()
+		  语法：字符串.substr(开始索引，多少个)  包前不包后
+		8.substring()
+		  语法：字符串.substring(开始索引，结束索引)
+		9.slice() 和数组方法同名
+		  语法：字符串.slice(开始索引，结束索引)
+		7.8.9
+		  作用：截取字符串
+		  返回值：截取出来的字符串
+
+		
+	 -->
+</head>
+<body>
+	<script type="text/javascript">
+		var str='你好，你好！JavaScript'
+		console.log(str)
+		var ch=str.charAt(3)
+		console.log(ch)
+		// for(var i=0;i<=str.length;i++){
+		// 	var ch=str.charAt(i)
+		// 	console.log(ch)
+		// }
+
+		console.log(' ')
+		var t=str.toLowerCase()
+		console.log(t)
+
+		console.log(' ')
+		var r=str.replace('你好','Hello1')
+		console.log(r)
+
+		console.log(' ')
+		var str1='2022-5-20'
+		var sp=str1.split('-')
+		console.log(sp)
+
+		console.log(' ')
+		console.log(str)
+		var res1=str.substr(1,8)
+		console.log('substr='+res1)
+		var res2=str.substring(1,8)
+		console.log('substring='+res1)
+		var res3=str.slice(1,8)
+		console.log('slice='+res1)
+
+
+	</script>
+</body>
+</html>

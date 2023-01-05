@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>箭头函数</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		//以前写法
+		var fn1=function(){console.log("我是fn1函数")}
+		//箭头函数
+		var fn2=()=>{console.log('我是箭头函数')}
+		fn2()
+		fn1()
+
+
+		/*
+			1.当形参只有一个时，可以不写()
+			2.当代码只有一句的时候，可以不写{}，并自动的把这一句话的结果当做函数的返回值
+		*/
+		var j1=()=>{console.log('我没有形参')}
+		j1()
+		var j2= a => {console.log('我只有一个参数:',a)}
+		j2(100)
+		var j3=(x,y) =>{console.log('我有两个形参:',x,y)}
+		j3(1,2)
+
+
+		var j21=(a,b) => a+b
+		console.log(j21(10,20))
+
+
+	</script>
+</body>
+</html>

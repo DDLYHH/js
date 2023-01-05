@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>回到顶部</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+		    height: 1500px;
+		}
+		.header{
+			height: 80px;
+			background-color: lightblue;
+			line-height: 80px;
+			font-size: 24px;
+			color: white;
+			text-align: center;
+			position: fixed;
+			top: -80px;
+			transition: top .8s linear;
+		}
+		.goTop{
+			width: 35px;
+			height: 42px;
+			background-color: pink;
+			color: white;
+			padding: 3px;
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		顶部通栏
+	</div>
+	<div class="goTop">回到顶部</div>
+	
+<script type="text/javascript">
+	var header=document.querySelector('.header')
+	var goTop=document.querySelector('.goTop')
+	
+	window.onscroll=function(){
+		var height=document.documentElement.scrollTop || document.body.scrollTop
+		console.log(height)
+
+		if(height>=120){
+			header.style.top='0px'
+			goTop.style.display='block'
+		}else{
+			header.style.top='-80px'
+			goTop.style.display='none'
+		}
+	}
+	goTop.onclick=function(){
+		// header.style.top='-80px'
+		// goTop.style.display='none'
+		window.scrollTo({
+			top:0,
+			behavior:'smooth'
+		})
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>时间常用方法</title>
+	<!-- 
+	  一、获取时间方法
+		1.时间对象.getFullYear()
+		  获取到时间对象中的年份信息
+		2.时间对象.getMouth()
+		  获取到时间对象中的月份信息
+		3.时间对象.getDate()
+		  获取到时间对象中的日期信息
+		4.时间对象.getHours()
+		  获取到时间对象中的小时信息
+		5.时间对象.getMinutes()
+		  获取到时间对象中的分钟信息
+		6.时间对象.getSeconds()
+		  获取到时间对象中的秒钟信息
+		7.时间对象.getDay()
+		  获取到时间对象中的星期信息
+		8.时间对象.getTime()
+		  获取到时间对象中的时间戳信息
+		  任意一个时间节点和计算机元年格林威治时间（1970年1月1日0点0分0秒）相差的毫秒数，就是这个时间点的时间戳
+   
+	  二、设置时间方法
+	    1.时间对象.setFullYear(与日期相关的数字)
+		  设置时间对象中的年份信息
+		2.时间对象.setMouth(与日期相关的数字)
+		  设置到时间对象中的月份信息
+		3.时间对象.setDate(与日期相关的数字)()
+		  设置到时间对象中的日期信息
+		4.时间对象.setHours(与日期相关的数字)
+		  设置到时间对象中的小时信息
+		5.时间对象.setMinutes(与日期相关的数字)
+		  设置到时间对象中的分钟信息
+		6.时间对象.setSeconds(与日期相关的数字)
+		  设置到时间对象中的秒钟信息
+		7.时间对象.setTime(与日期相关的数字)
+		  设置到时间对象中的时间戳信息
+
+	 -->
+</head>
+<body>
+	<script type="text/javascript">
+		//创建时间对象
+		var time1=new Date()
+		console.log(time1)
+		var time2=new Date(2022,2,23,11,22,18)
+		console.log(time2)
+
+
+		var year=time1.getFullYear()
+		console.log(year)
+		var time=time1.getTime()
+		console.log(time)
+
+		time1.setFullYear(2011)
+		time1.setMonth(1)
+		time1.setDate(12)
+		console.log(time1)
+
+
+		//获取两个时间节点之间的时间差		
+		console.log(' ')
+		var x=new Date(2022,10,1,9,4,5)
+		var y=new Date(2022,10,7,16,6,5)
+		function getDiff(x,y){
+			var x1=x.getTime()
+			var x2=y.getTime(x2)
+			var s=x2-x1
+
+			//换算
+			var t=s/1000
+			console.log(t)
+			var day=Math.floor(t/(60*60*24))
+			var hours=Math.floor(t % (60*60*24) / (60*60))
+			var minutes=Math.floor(t % (60*60) /60)
+			var seconds=t % 60 
+
+			return {day:day,hours:hours,minutes:minutes,seconds:seconds}
+		}
+		var res=getDiff(x,y)
+		console.log(res)
+		
+
+
+	</script>
+</body>
+</html>

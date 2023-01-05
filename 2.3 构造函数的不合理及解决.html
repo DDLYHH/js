@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>构造函数的不合理及解决</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Method(name,age){
+			this.name=name
+			this.age=age
+			this.sayHi=function() {
+				console.log("hello");
+			}
+		}
+		var m1=new Method("爽爽",3);
+		var m2=new Method("嘻嘻",4);
+	
+		console.log(m1,m2);  
+		console.log(m1==m2);//结果为：false
+		m1.sayHi();
+		m2.sayHi();
+		console.log(m1.sayHi==m2.sayHi);//结果为：false
+		/*
+			说明只要创建一次对象（new 一次),就会有一个函数在占用空间
+			并且是重复的占用空间，浪费了空间。对象创建的越多，浪费的空间越大
+		*/
+
+		/*
+			解决方法：
+			原型 prototype
+			  =>定义：每一个函数天生自带一个属性,叫做prototype,是一个对象
+
+			属性：直接写在构造函数体内
+			方法：写在构造函数的原型上
+
+		*/
+		Method.prototype.pro=function(){console.log("我是protoytype原型上的方法")}
+		var m3=new Method();
+		var m4=new Method();
+		m3.pro();
+		m4.pro();
+		console.log(m3,m4);	
+		console.log(m3.pro==m4.pro);	
+
+
+		// function Person(){
+
+		// }
+		// Person.prototype.sayHi=function(){
+		// 	console.log("我是Person原型上的方法");
+
+		// }
+		// console.log(Person.prototype);
+		// var p1=new Person()
+		// console.log(p1);
+		// p1.sayHi();
+
+		// var p2=new Person()
+		// console.log(p2);
+		// p2.sayHi();
+
+		// console.log(p1.sayHi===)
+
+
+	</script>
+</body>
+</html>

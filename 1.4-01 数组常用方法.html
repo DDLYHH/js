@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>数组的常用方法</title>
+	<!-- 
+		1.push()
+		  语法： 数组.push(数据)
+		  作用： 将数据追加到数组的末尾
+		  返回值： 追加数据后数组的最新长度
+		2.pop()
+		  语法： 数组.pop()
+		  作用： 删除数组最后一个数据
+		  返回值： 被删除的数据
+		3.unshift()
+		  语法： 数组.unshift(数据)
+		  作用： 将数添加到数组的开头
+		  返回值： 添加数据后数组的最新长度
+		4.shift()
+		  语法： 数组.shift()
+		  作用： 删除数组最前一个数据
+		  返回值： 被删除的数据
+		5.reverse()
+		  语法： 数组.reverse()
+		  作用： 将数组反转
+		  返回值： 反转后的数组
+		6.splice()
+		  语法：数组.splice(开始索引，多少个，要插入的数据)
+		  		开始索引：默认是0（从头开始）
+		  		多少个：默认是0
+		  		要插入的数据：默认是没有（可不插入数据）
+		  作用：删除数组中若干数据，并选择是否插入新的数据
+		  返回值：以新数组的形式返回被删除的数据
+		7.sort()
+		  语法：
+		       数组.sort()  不需要传参数
+		       数组.sort(function (a,b) {return a-b})
+		       数组.sort(function (a,b) {return b-a}) 都以一个函数作为参数
+		  作用：把数组排序
+		  返回值：排序号的数组
+		8.join()
+		  语法：数组.join(连接符)
+		  作用：将数组用连接符连接成为一个字符串
+		  返回值：连接好的字符串
+		9.concat()
+		  语法：数组.concat(其它数组)
+		  作用：将其它数组和数组拼接在一起
+		  返回值：拼接好的新数组
+		10.slice()
+		  语法：数组.slice(开始索引，结束索引)
+		         开始索引：默认是0
+		         借宿索引：默认是数组长度
+		  作用：截取数组中的某些数据
+		  返回值：以新数组的形式返回截取出来的数据
+		11.indexOf()
+		   语法：数组.indexOf(数据)
+		   作用：查找数据在数组中的索引位置
+		   返回值：有该数据，返回第一次出现的索引位置
+		         没有该数据，返回-1
+		12.forEach()
+		   语法：数组.forEach( function(item,index,arr) {} )
+				item：表示每一项
+				index：表示数组的索引
+				arr：原始数组
+
+		   作用：遍历数组
+		   返回值：无
+		13.map()
+		   语法：数组.map( function(item,index,arr) {} )
+				item：表示每一项
+				index：表示数组的索引
+				arr：原始数组
+		  	作用：映射数组
+		  	返回值：映射数组后的新数组
+		14.filter()
+		   语法：数组.filter( function(item,index,arr) {} )
+		   作用：过滤数组
+		   返回值：过滤后的新数组
+		15.every()
+		   语法：数组.every(function (item,index,arr) {} )
+		   作用：判断数组是不是每一项都满足条件
+		   返回值：一个布尔值
+		16.some()
+		   语法：数组.some(function (item,index,arr) {} )
+		   作用：判断数组是不是某一些满足条件
+		   返回值：一个布尔值
+	 -->
+</head>
+<body>
+	<script type="text/javascript">
+		var arr=[1,2,3,4,5]
+		console.log(arr)
+		var res=arr.push('追加的')
+		console.log(arr)
+		console.log(res) //输出为6，是数组长度,代表返回结果为数组的最新长度
+
+		console.log(' ')
+		var del=arr.pop()
+		console.log(arr)
+		console.log(del)
+
+		console.log(' ')
+		var ad=arr.unshift('偶尔王府井',666)
+		console.log(arr)
+		console.log(ad)
+
+		console.log(' ')
+		var del1=arr.shift()
+		console.log(arr)
+		console.log(del1)
+
+		console.log(' ')
+		var rev=arr.reverse()
+		console.log(arr)
+		console.log(rev)
+
+		console.log(' ')
+		var sp=arr.splice(2,2,'填','加','的')
+		console.log(arr)
+		console.log(sp)
+
+		console.log(' ')
+		var arr1=[11,1,22,13,45,32,2]
+		console.log(arr1)
+		/*//按照位来排序
+		var res1=arr1.sort()*/
+		/*//从小到大升序排序
+		var res1=arr1.sort( function (a,b) {return a-b} )*/
+		//从大到小降序排序
+		var res1=arr1.sort( function (a,b) {return b-a} )
+		console.log(arr1)
+		console.log(res1)
+
+		console.log(' ')
+		console.log(arr)
+		var joi=arr.join('+')
+		console.log(joi)
+
+		console.log(' ')
+		var con=arr.concat(arr1)
+		console.log(con)
+
+		console.log(' ')
+		console.log(arr)		
+		var sl=arr.slice(1)
+		console.log(sl)
+
+		console.log(' ')
+		var index=arr.indexOf(300)
+		console.log(index)
+
+		console.log(' ')
+		var arr2=[1,2]
+		console.log(arr2)
+		arr2.forEach(function (item,index,arr) {
+			console.log(item)
+			console.log(index)
+			console.log(arr2)
+			console.log('-----------')
+		})
+
+		console.log(' ')
+		console.log(arr2)
+		var m=arr2.map(function (item,index,arr){
+			return item*10
+		})
+		console.log(m)
+
+		console.log(' ')
+		console.log(arr2)
+		var f=arr2.filter(function (item,index,arr){
+			return item>1
+		})
+		console.log(f)
+
+		console.log(' ')
+		console.log(arr2)
+		var e=arr2.every(function (item,index,arr){
+			return item>1
+		})
+		console.log(e)
+
+		console.log(' ')
+		console.log(arr2)
+		var s1=arr2.some(function (item,index,arr){
+			return item>1
+		})
+		console.log(s1)		
+	</script>
+</body>
+</html>

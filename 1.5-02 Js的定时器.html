@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JS的定时器</title>
+	<!-- 
+        间隔定时器：
+             按照指定周期（毫秒）去执行指定的代码
+           	 语法：setInterval(函数，时间)
+           	      函数：每次要执行的内容
+           	      时间：单位是毫秒
+        延时定时器：
+        	 在固定的事件（毫秒）后指定一次代码
+        	 语法：setTimeout(函数，时间)
+           	      函数：时间到达执行的内容
+           	      时间：单位是毫秒
+           	定时器返回值：不区分定时器种类，只表示当前页面的第几个定时器
+
+        关闭定时器(不区分种类)：
+               语法1：clearInterval(要关闭的定时器返回值)
+               语法2：clearTimeout(要关闭的定时器返回值)
+
+	 -->
+</head>
+<body>
+	<button id="off">关闭定时器</button>
+
+	<input type="button" name="" value="点击跳转">
+	<div></div>
+<script type="text/javascript">
+	var btn=document.querySelector('input')
+	var div=document.querySelector('div')
+	btn.addEventListener('click',function(){
+		location.href="http://www.itcast.cn";
+	})
+	var timer=5;
+	setInterval(function(){
+		if(timer==0){
+			location.href="http://www.itcast.cn";
+		}
+		div.innerHTML="你将在"+timer+"秒后跳转";
+		timer--;
+	},1000);
+	
+
+
+
+	// var time=function(){
+	// 	console.log('hello')
+	// }
+	// setInterval(time,1000)
+
+
+	var timer1=setInterval(function(){
+		console.log('间隔定时器')
+	},2000)
+
+	var timer2=setTimeout(function(){
+		console.log('延时定时器')
+	},4000)
+	//console.log('timer1'+":"+timer1,'timer2'+":"+timer2)
+
+	off.onclick=function(){
+		// window.alert('hello')
+		clearInterval(timer2)
+		clearTimeout(timer1)
+	}
+
+
+
+</script>
+</body>
+</html>

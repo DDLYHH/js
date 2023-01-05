@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>面向对象选项卡</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.tab{
+			margin: 10px auto;
+			width: 400px;
+			height: 300px;
+			border: 3px solid black;
+			display: flex;
+			flex-direction: column;
+		}
+		ul{
+			width: 100%;
+			display: flex;
+		}
+		ul li{		
+			width: 33.33%;
+			height: 100px;
+			line-height: 100px;	
+			text-align: center;
+			background: blueviolet;	
+		}
+		ol{		
+			flex: 1;
+			position: relative;	
+		}
+		ol li{
+			height: 100%;
+			position: absolute;
+			left: 0;
+			right: 0;
+			background: purple;
+			font-size: 30px;
+			justify-content: center;	
+			align-items: center;
+			display: none;
+		}
+		ul .active{
+			background: orange;
+		}
+		ol .active{
+			display: flex;
+			background: lightpink;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="tab" id="box">
+		<ul>
+			<li class="active" >1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<ol>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+		</ol>
+	</div>
+	<div class="tab" id="box2">
+		<ul>
+			<li class="active" >1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ol>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ol>
+	</div>
+
+
+	<script type="text/javascript">
+	
+	     /*
+			1.抽象内容
+			 一个能够完成选项卡的对象，需要有哪些属性和方法
+			 属性：所有可以点击的按钮盒子
+			 属性：所有可以切换按钮的盒子
+			 方法：能添加点击事件的方法
+			2.书写构造函数
+			 能创建一个对象，包含两个属性和一个方法
+			 属性直接写在构造函数体内
+			 方法写在构造函数的原型上
+		 */
+
+		 //1.书写构造函数
+		 function Tabs(ele){
+		 	//3.范围
+		 	this.ele=document.querySelector(ele)
+		 	//4.在范围内查找所有可以点击的盒子
+		 	this.btns=this.ele.querySelectorAll('ul>li')
+		 	//5.在范围内查找所有需要切换显示的盒子
+		 	this.tabs=this.ele.querySelectorAll('ol>li')
+
+		 }
+
+		 //6.方法
+		 Tabs.prototype.change=function(){
+		 	/*//7.给所有btns里面的按钮添加点击事件，要拿到btns
+		 	console.log(this.btns)*/
+
+		 	//9.3 提前保存this
+		 	var _this=this
+
+		 	//9.实现选项卡
+		 	for(var i=0;i<this.btns.length;i++){
+
+		 		//9.1 提前保存索引
+		 		this.btns[i].setAttribute('index',i)
+
+		 		this.btns[i].addEventListener('click',function(){
+		 			
+		 			/*console.log("我被点击了")*/
+
+		 			/*//9.2 这里是事件处理函数的作用域，此时this指向当前事件的事件源
+		 			console.log(this)*/
+
+		 			/*//9.4 当访问_this时，是在访问变量
+		 			console.log(_this)*/
+
+		 			//9.5 让实例的btns和tabs里面都没有active类名
+		 			for(var j=0;j<_this.btns.length;j++){
+		 				_this.btns[j].className=''
+		 				_this.tabs[j].className=''
+		 			}
+		 			//9.6 当前点击的这个li有active类名
+		 			this.className='active'
+		 			//9.7 让实例身上的tabs里面索引对应那一个li有active类名,要得到当前li索引
+		 			var index=this.getAttribute('index') - 0
+		 			_this.tabs[index].className='active'
+		 			
+		 		})
+		 	}
+
+		 }
+
+		 //2.使用的时候var t,选项卡就可以使用了,通过Id名获取元素
+		  var t=new Tabs("#box")
+		  //8.调用函数
+		  t.change()
+		  console.log(t)
+
+		  var t2=new Tabs("#box2")
+		  t2.change()
+	</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BOM操作</title>
+	<style type="text/css">
+		body{
+			width: 2000px;
+			height: 2000px;
+		}
+		#go{
+			position: fixed;
+			bottom: 50px;
+			right: 50px;
+		}
+	</style>
+	<!-- 
+        BOM---Browser Object Model
+        一整套操作浏览器相关内容的属性和方法
+
+		1.获取浏览器窗口尺寸
+		  window.innerWidth:获取可视窗口宽度
+		  window.innerHeight:获取可视窗口高度
+		2.浏览器的弹出层
+		  提示框：window.alert('提示信息')
+		  询问框：window.confirm('提示信息') 返回值：true/false
+		  输入框：window.prompt('提示信息')  返回值：输入的信息
+		3.开启和关闭标签页
+		  开启：window.open('地址')
+		  关闭：window.close()
+		4.浏览器常见事件
+		  资源加载完毕：window.onload=function(){}
+		  可视尺寸改变：window.onresize=function(){}
+		  滚动条位置改变：window.onscroll=function(){}
+		5.浏览器的历史记录操作
+		  回退页面：window.history.back()
+		  前进页面：window.history.forward()
+		6.浏览器卷去的尺寸
+		  卷去的高度：
+		      document.documentElement.scrollTop(页面有<!DOCTYPE html>时使用)
+		      document.body.scrollTop(页面无<!DOCTYPE html>时使用)
+		  卷去的宽度：
+		      document.documentElement.scrollLeft
+		      document.body.scrollLeft
+		7.设置浏览器滚动条的位置
+		  滚动到：window.scrollTo()
+		      传递参数方式1：window.scrollTo(left,top)
+		                    left:浏览器卷去的宽度
+		                    top:浏览器卷去的高度
+			  传递参数方式2：window.scrollTo({
+					left:xx,
+					top:yy,
+					behavior:'smooth' (平滑滚动)
+			  })
+
+	 -->
+</head>
+<body>
+
+	<button id="on">开启</button>
+	<button id="off">关闭</button>
+	<button id="go">走你</button>
+
+	<script type="text/javascript">
+		console.log(window.innerWidth)
+		console.log(window.innerHeight)
+
+		// window.alert('我是提示框')
+		// window.confirm('我是询问框')
+		// window.confirm('我是输入框')
+
+
+		//开启按钮的点击事件
+		//页面元素的id可以直接当做变量来使用
+		on.onclick=function(){
+			window.open('https://www.iconfont.cn/')
+		}
+		//关闭标签页
+		off.onclick=function(){
+			window.close()
+		}
+
+
+		//在页面资源加载完毕后执行
+		window.onload=function(){
+			console.log('资源已经加载完完毕')
+		}
+		//在可视窗口发生变化的时候触发
+		window.onresize=function(){
+			console.log('窗口尺寸发生改变了')
+		}
+
+		//滚动条位置发生变化时触发
+		window.onscroll=function(){
+			//console.log('滚动条位置改变了')
+			//获取卷去的高度
+			//console.log(document.documentElement.scrollTop)
+			//兼容的写法
+			var height=document.documentElement.scrollTop || document.body.scrollTop
+			console.log(height)
+		}
+
+
+		go.onclick=function(){
+			// window.scrollTo(300,400)
+			window.scrollTo({
+				left:400,
+				top:400,
+				behavior:'smooth'
+			})
+		}
+
+		
+	</script>
+</body>
+</html>

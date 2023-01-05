@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>数字常用方法</title>
+	<!-- 
+		1.random()
+		  语法：Math.random()
+		  作用：获取0~1之间的随机小数，包含0，但是不包含1
+		  返回值：0~1之间的随机小数
+		2.round()
+		  语法：Math.round(数字)
+		  作用：对数字进行四舍五入取整
+		  返回值：四舍五入后的整数
+		3.ceil()
+		  语法：Math.ceil(数字)
+		  作用：对数字进行向上取整
+		  返回值：向上取整后的整数
+		4.floor()
+		  语法：Math.ceil(数字)
+		  作用：对数字进行向下取整
+		  返回值：向下取整后的整数
+		5.pow()
+		  语法：Math.pow(底数，指数)
+		  作用：对数字进行取幂运算
+		  返回值：取幂后的结果
+		6.sqrt()
+		  语法：Math.sqrt(数字)
+		  作用：对数字进行二次方根运算
+		  返回值：（只保留正数部分）二次方根后的结果
+		7.abs()
+		  语法：Math.abs(数字)
+		  作用：对数字进行绝对值运算
+		8.max()
+		  语法：Math.max(数字1，数字2，数字3...)
+		  作用：获取若干数字的最大值
+		9.min()
+		  语法：Math.min(数字1，数字2，数字3...)
+		  作用：获取若干数字的最小值
+		10.PI（属性)
+		  语法：Math.PI
+		  作用：得到一个近似π的值
+		11.
+
+	 -->
+</head>
+<body>
+<script type="text/javascript">
+	var res=Math.random()
+	console.log(res)
+
+	var ro=Math.round(10.5)
+	console.log(ro)
+
+	var ce=Math.ceil(11.5)
+	console.log(ce)
+
+	var fl=Math.floor(11.5)
+	console.log(fl)
+
+	var po=Math.pow(2,3)
+	console.log(po)
+
+	var sq=Math.sqrt(3)
+	console.log(sq)
+
+	var p=Math.PI
+	console.log(p)
+
+	//例1：获取一个范围内的随机整数
+	var r1=Math.random()
+	var r2=r1*10
+	var res1=Math.round(r2)
+	console.log(res1)
+	
+	var f1=Math.random()
+	var f2=f1*31
+	var res2=Math.floor(f2)
+	console.log(res2)
+
+	var f3=Math.random()
+	var f4=f3*10+1
+	var res3=Math.floor(f4)
+	console.log(res3)
+
+	/*
+		例2：获取x~y之间的随机整数
+		     0~两数差 之间的随机整数，然后+小一点的数字（x）
+
+	*/
+	var max=26
+	var min=10
+	var m=Math.floor(Math.random() * (max-min +1))
+	var m2=m+min
+	document.write(m2)
+
+	//封装函数
+	console.log(' ')
+	function randomNum(min,max){
+		var a1=Math.floor( Math.random() * (max-min +1) )
+		var a2=a1+min
+		return a2
+	}
+	var a=randomNum(10,20)
+	console.log(a)
+
+</script>
+</body>
+</html>

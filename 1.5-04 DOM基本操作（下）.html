@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM基本操作（下）</title>
+	<!--
+	 	(下)
+		节点操作(先获取节点再操作！！！)
+			创建节点：
+				语法：document.createElement('标签名称')
+				作用：创建一个指定标签元素
+				返回值：一个创建好的元素节点
+
+			插入节点:
+				语法1：父节点.appendChild(子节点)
+				作用：把自己诶单放在父节点的内部，并且放在最后的位置
+				语法2：父节点.insertBefore(要插入的子节点，哪一个子节点的前面)
+				作用：把子节点放在父节点的内部，并且放在指定某一个子节点的前面
+
+			删除节点:
+				语法1：父节点.removeChild(子节点)
+				作用：从父节点内删除某一个子节点
+				语法2：节点.remove()
+				作用：把自己删除
+				
+			替换节点：
+				语法：父节点.replaceChild(换上节点，换下节点)
+				作用：在父节点内，使用换上节点替换掉换下节点
+
+			克隆节点：
+				语法：节点.cloneNode(是否克隆后代节点（true,false))
+				作用：把该节点复制一份一模一样的内容
+
+		获取元素尺寸：
+			语法1：
+				元素.offsetHeight
+				元素.offsetWidth
+			获取：元素 内容+padding+border区域的尺寸
+
+			语法2：
+				元素.clientHeight
+				元素.clientWidth
+			获取：元素 内容+padding区域的尺寸
+
+
+	 -->
+</head>
+<body>
+	<div>
+		<p>我是div本身的p标签</p>
+		<h2>我是h2</h2>
+	</div>
+<script type="text/javascript">
+	//创建节点
+	var sp=document.createElement('span')
+	sp.innerText='我是创建出来的span标签'
+	console.log(sp)
+
+
+	//插入节点(先获取父节点再插入)
+	/*
+	//方法一
+	var div=document.querySelector('div')
+	div.appendChild(sp)
+	*/
+
+	//方法二
+	var div=document.querySelector('div')
+	var p=document.querySelector('p')
+	div.insertBefore(sp,p)
+
+	var h2=document.querySelector('h2')
+	var inp=document.createElement('input')
+	inp.value="我是创建出来的input"
+	div.replaceChild(inp,h2)
+
+	var c1=div.cloneNode(true)
+	var c2=div.cloneNode(false)
+	console.log('克隆后代节点',c1)
+	console.log('不克隆后代节点',c2)
+
+</script>
+</body>
+</html>

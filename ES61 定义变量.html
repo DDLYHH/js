@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>定义变量</title>
+	<!-- 
+		ES6新增了两个定义变量的关键字
+			Let=>定义变量
+			const=>定义常量（特殊的变量）
+		let/const与var区别
+			(1)var会进行预解析，let/const不会
+			(2)var可以声明两个重名的变量，let/const不能定义
+			(3)var没有块级作用域，let/const有块级作用域
+	 -->
+</head>
+<body>
+
+	<script type="text/javascript">
+		//1.预解析
+		console.log(num)
+		var num=100
+		console.log("num:"+num)
+
+		//定义之前使用let声明的变量会报错
+		// console.log(num2)
+		let num2=200
+		console.log("num2:"+num2)
+
+		//定义之前使用const声明的变量会报错
+		// console.log(num3)
+		const num3=300
+		console.log("num3:"+num3)
+
+		//2.重复变量名
+		var n1=100
+		var n1=200
+		console.log(n1)
+
+		// let l1=100
+		// let l1=200
+		// console.log(l1)
+
+
+
+		//3.块级作用域：任何可以执行代码段的{}都会限制该变量的使用范围
+		if(true){
+			var n=100
+			console.log(n)
+		}
+		console.log("n:"+n)
+
+		if(true){
+			let l=200
+			console.log(l)
+		}
+		//这个l使用let关键自定义，所以只能在if的{}内使用，const同样
+		// console.log("l:"+l)
+
+		//4.定义时不赋值
+		let numl
+		console.log("numl:"+numl)
+		numl="我是let定义的"
+		console.log(numl)
+		//使用const的时候，声明时必须赋值
+		const numl
+		console.log("numl:"+numl)
+		numl="我是const定义的"
+		console.log(numl)
+
+		//5.修改
+		let nl=100
+		console.log(nl)
+		nl=200
+		console.log("nl:"+nl)
+
+		const nl=100
+		console.log(nl)
+		//const定义的不能修改
+		nl=200
+		console.log("nl:"+nl)
+
+
+
+	</script>
+</body>
+</html>

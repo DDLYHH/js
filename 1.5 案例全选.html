@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>全选</title>
+	<style type="text/css">
+		.box{
+			margin: 10px auto;
+			border: 1px solid lightgray;
+			padding: 10px;
+			width: 100px;
+			height: 120px;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		全选：<input type="checkbox" name="">
+		<hr>
+		<input type="checkbox" name="">选项一<br>
+		<input type="checkbox" name="">选项二<br>
+		<input type="checkbox" name="">选项三<br>
+		<input type="checkbox" name="">选项四
+	</div>
+	<script type="text/javascript">
+		var allInp=document.querySelector('input')
+		var item=document.querySelectorAll('input:nth-child(n+2)')
+		console.log(allInp)
+		console.log(item)
+
+		allInp.onclick=function(){
+			var type=allInp.checked
+			for(var i=0;i<item.length;i++){
+				item[i].checked=type
+			}
+		}
+
+		//循环给每一个按钮绑定点击事件
+		for(var i=0;i<item.length;i++){
+			item[i].onclick=function(){
+				var flag=true   //假设所有按钮都是选中的
+
+				for(var j=0;j<item.length;j++){
+					if(item[j].checked==false){
+						flag=false
+						break
+					}
+				}
+			    allInp.checked=flag
+			}
+		}
+		
+	</script>
+</body>
+</html>

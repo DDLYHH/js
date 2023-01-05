@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>轮播图</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.banner{
+			width: 90%;
+			margin: 10px auto;
+			position: relative;
+		}
+		ul,ol,li{
+			list-style: none;
+		}
+		ul li{
+			position: absolute;
+			left: 0;
+			top: o;
+			opacity: 0;
+			transition: opacity .5s linear;//渐隐渐现
+		}
+		.active{
+			opacity: 1;
+		}
+		ol{
+			width: 200px;
+			height: 30px;
+			position: absolute;
+			right: 30px;
+			bottom: 20px;
+			background: rgba(0, 0, 0, .5);
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			border-radius: 5px;
+		}
+		ol li{
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: #fff;
+			cursor: pointer;
+		}
+		.active1{
+			background: red;
+		}
+		.banner div{
+			width: 40px;
+			height: 60px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(0, 0, 0,  .5);
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 30px;
+			color: #fff;
+		}
+		.left{
+			left: 0;
+		}
+		.right{
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul>
+			<li class="active"><img src="images/l1.jpg"></li>
+			<li><img src="images/l2.png"></li>
+			<li><img src="images/l3.png"></li>
+			<li><img src="images/l4.png"></li>
+		</ul>
+		<ol>
+			<li data-i='0' data-name='point' class="active1"></li>
+			<li data-i='1' data-name='point'></li>
+			<li data-i='2' data-name='point'></li>
+			<li data-i='3' data-name='point'></li>
+		</ol>
+		<div class="left">&lt;</div>
+		<div class="right">&gt;</div>
+	</div>
+
+<script type="text/javascript">
+	var banner=document.querySelector('.banner')
+	var imgs=document.querySelectorAll('ul>li')
+	var points=document.querySelectorAll('ol>li')
+	var index=0
+
+	function changeOne(type){
+		imgs[index].className=''
+		points[index].className=''
+
+		if(type === true){
+			index++
+		}else if(type === false){
+			index--
+		}else{
+			index=type
+		}
+
+		if(index>=imgs.length){
+			index=0
+		}
+		if(index<0){
+			index=imgs.length-1
+		}
+
+		imgs[index].className='active'
+		points[index].className='active1'
+
+	}
+
+	banner.onclick=function(e){
+		if(e.target.className==='left'){
+			changeOne(false)
+			console.log('左边')
+		}
+		if(e.target.className==='right'){
+			changeOne(true)
+			console.log('右边')
+		}
+		if(e.target.dataset.name==='point'){
+			console.log('点点')
+			var i=e.target.dataset.i-0
+			changeOne(i)
+
+		}
+	}
+
+	setInterval(function(){
+		changeOne(true)
+	},5000)
+</script>
+</body>
+</html>
